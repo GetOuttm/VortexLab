@@ -1,0 +1,23 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: vortex-gateway
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+    gateway:
+      routes:
+        - id: user
+          uri: lb://vortex-user
+          predicates:
+            - Path=/user/**
+
+        - id: order
+          uri: lb://vortex-order
+          predicates:
+            - Path=/order/**

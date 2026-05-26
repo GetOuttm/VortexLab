@@ -1,0 +1,45 @@
+# IDE 配置文件（IntelliJ IDEA）
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# 编译输出目录
+target/
+classes/
+build/
+
+# Maven 相关（不需要提交本地仓库）
+log/
+dependency-reduced-pom.xml
+
+# Gradle 相关
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+
+# 日志文件
+*.log
+*.log.*
+
+# 操作系统生成文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 配置文件（包含本地敏感信息）
+*.properties
+application-local.yml
+application-dev.yml
+
+# 临时文件
+*.tmp
+*.swp
+*.bak
+
+# 本地环境配置
+.env
+.venv
+venv/
