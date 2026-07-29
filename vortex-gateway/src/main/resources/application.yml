@@ -12,12 +12,21 @@ spring:
 
     gateway:
       routes:
-        - id: user
+        - id: user-service
           uri: lb://vortex-user
           predicates:
             - Path=/user/**
 
-        - id: order
+        - id: order-service
           uri: lb://vortex-order
           predicates:
             - Path=/order/**
+            -
+        - id: auth-service
+          uri: lb://vortex-auth
+          predicates:
+            - Path=/auth/**
+
+  redis:
+    host: localhost
+    port: 6379
