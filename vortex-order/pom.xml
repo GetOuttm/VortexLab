@@ -16,7 +16,6 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
-
         <!-- web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -45,6 +44,7 @@
         <dependency>
             <groupId>com.vortexlab</groupId>
             <artifactId>vortex-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
     </dependencies>

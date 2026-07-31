@@ -11,7 +11,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * 默认端口：9000
  * </p>
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.vortexlab")
 @EnableDiscoveryClient
 public class GatewayApplication {
     public static void main(String[] args) {

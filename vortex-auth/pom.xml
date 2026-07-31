@@ -10,37 +10,55 @@
         <relativePath>../vortex-parent/pom.xml</relativePath>
     </parent>
 
-    <groupId>com.vortexlab</groupId>
     <artifactId>vortex-auth</artifactId>
-    <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+        </dependency>
+
+        <!--web-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!--nacos-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
-        <!-- redis -->
+        <!--openfeign-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.vortexlab</groupId>
-            <artifactId>vortex-common</artifactId>
+            <artifactId>vortex-api-user</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>com.alibaba.fastjson2</groupId>
-            <artifactId>fastjson2</artifactId>
-            <version>2.0.39</version>
+            <groupId>com.vortexlab</groupId>
+            <artifactId>vortex-common-security</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- redis -->
+        <dependency>
+            <groupId>com.vortexlab</groupId>
+            <artifactId>vortex-common-redis</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.vortexlab</groupId>
+            <artifactId>vortex-common-web</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
 </project>

@@ -11,9 +11,7 @@
         <relativePath>../vortex-parent/pom.xml</relativePath>
     </parent>
 
-    <groupId>com.vortexlab</groupId>
     <artifactId>vortex-gateway</artifactId>
-    <version>1.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
@@ -31,43 +29,16 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
-        <!-- redis
-         为什么不是spring-boot-starter-data-redis
-         因为 gateway 是 Spring WebFlux  所以必须用 Reactive Redis 否则会线程阻塞
-         -->
+        <!-- jwt -->
+        <dependency>
+            <groupId>com.vortexlab</groupId>
+            <artifactId>vortex-common-security</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
-        </dependency>
-
-        <!-- jwt -->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-api</artifactId>
-            <version>0.11.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-impl</artifactId>
-            <version>0.11.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt-jackson</artifactId>
-            <version>0.11.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.vortexlab</groupId>
-            <artifactId>vortex-common</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

@@ -1,6 +1,6 @@
 package com.vortexlab.controller;
 
-import com.vortexlab.api.UserClient;
+import com.vortexlab.api.user.UserClient;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

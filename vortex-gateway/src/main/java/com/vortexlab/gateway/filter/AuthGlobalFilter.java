@@ -1,12 +1,12 @@
 package com.vortexlab.gateway.filter;
 
-import com.vortexlab.common.util.JwtUtil;
-import jakarta.annotation.Resource;
+import com.vortexlab.common.security.jwt.JwtUtil;
+import com.vortexlab.gateway.constant.GatewayConstant;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
-import org.springframework.data.redis.core.ReactiveStringRedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
@@ -21,15 +21,10 @@ import reactor.core.publisher.Mono;
  */
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class AuthGlobalFilter implements GlobalFilter, Ordered {
 
-    @Resource
-    private ReactiveStringRedisTemplate redis;
-
-    /**
-     * 客户端传递 Token 的请求头名称
-     */
-    private static final String TOKEN_HEADER = "token";
+    private final JwtUtil jwtUtil;
 
     /**
      * 请求鉴权入口：白名单放行 → 提取 Token → 校验 → 转发或拒绝。
@@ -46,45 +41,32 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
                 .getURI()
                 .getPath();
 
-        // 登录接口无需鉴权，直接放行
-        if (path.contains("/auth/login")) {
-            return chain.filter(exchange);
+        // 白名单放行
+        for (String white : GatewayConstant.WHITE_LIST) {
+            if (path.equals(white)) {
+                return chain.filter(exchange);
+            }
         }
 
         // 从请求头获取 Token
         String token = exchange.getRequest()
                 .getHeaders()
-                .getFirst(TOKEN_HEADER);
+                .getFirst(GatewayConstant.TOKEN_BEARER);
 
         // Token 缺失，返回 401 未授权
         if (token == null || token.isEmpty()) {
-
-            exchange.getResponse()
-                    .setStatusCode(HttpStatus.UNAUTHORIZED);
-
-            return exchange.getResponse().setComplete();
-        }
-
-        Long userId;
-
-        try {
-            // 校验 Token 签名与有效期，失败则进入 catch
-            userId=    JwtUtil.parseToken(token);
-
-        } catch (Exception e) {
-            log.error("JWT解析失败", e);
             return unauthorized(exchange);
         }
 
-        // redis 校验登录状态
-        return redis.opsForValue()
-                .get("login:" + userId)
-                .flatMap(redisToken ->
-                        token.equals(redisToken)
-                                ? chain.filter(exchange)
-                                : unauthorized(exchange)
-                )
-                .switchIfEmpty(unauthorized(exchange));
+        if (token.startsWith("Bearer ")) {
+            token = token.substring(7);
+        }
+
+        if (!jwtUtil.validateToken(token)) {
+            return unauthorized(exchange);
+        }
+
+        return chain.filter(exchange);
     }
 
     private Mono<Void> unauthorized(ServerWebExchange exchange) {
@@ -102,6 +84,6 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
      */
     @Override
     public int getOrder() {
-        return 0;
+        return -100;
     }
 }

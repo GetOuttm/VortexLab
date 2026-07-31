@@ -14,6 +14,16 @@
     <groupId>com.vortexlab</groupId>
     <artifactId>vortex-common</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>vortex-common-web</module>
+        <module>vortex-common-security</module>
+        <module>vortex-common-redis</module>
+        <module>vortex-common-logging</module>
+        <module>vortex-common-core</module>
+        <module>vortex-common-mybatis</module>
+        <module>vortex-common-cache</module>
+    </modules>
 
     <dependencies>
         <dependency>
@@ -46,6 +56,16 @@
             <artifactId>jjwt-jackson</artifactId>
             <version>0.11.5</version>
             <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-annotation</artifactId>
+            <version>3.5.5</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
         </dependency>
     </dependencies>
 </project>

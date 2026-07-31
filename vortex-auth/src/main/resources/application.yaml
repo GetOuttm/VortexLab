@@ -1,5 +1,5 @@
 server:
-  port: 8083
+  port: 9002
 
 spring:
   application:
@@ -13,4 +13,9 @@ spring:
     host: localhost
     port: 6379
 
-
+vortex:
+  jwt:
+    secret:
+      vortexlab-secret-key-vortexlab-2026-vortex
+    expire:
+      604800000
