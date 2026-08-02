@@ -15,7 +15,7 @@
     <artifactId>vortex-parent</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
-    <name>Vortexlab</name>
+    <name>VortexLab</name>
 
     <!--子模块-->
     <modules>

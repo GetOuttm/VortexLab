@@ -7,6 +7,28 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <artifactId>vortex-common-idempotent</artifactId>
-    <name>Archetype - vortex-common-idempotent</name>
-    <url>http://maven.apache.org</url>
+
+    <dependencies>
+
+        <!-- 公共基础模块 -->
+        <dependency>
+            <groupId>com.vortexlab</groupId>
+            <artifactId>vortex-common-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- Redis -->
+        <dependency>
+            <groupId>com.vortexlab</groupId>
+            <artifactId>vortex-common-redis</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <!-- Spring AOP -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
+    </dependencies>
 </project>

@@ -23,6 +23,7 @@
         <module>vortex-common-core</module>
         <module>vortex-common-mybatis</module>
         <module>vortex-common-cache</module>
+        <module>vortex-common-idempotent</module>
     </modules>
 
     <dependencies>
