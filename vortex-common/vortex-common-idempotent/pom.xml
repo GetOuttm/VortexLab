@@ -9,7 +9,6 @@
     <artifactId>vortex-common-idempotent</artifactId>
 
     <dependencies>
-
         <!-- 公共基础模块 -->
         <dependency>
             <groupId>com.vortexlab</groupId>
@@ -30,5 +29,9 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+        </dependency>
     </dependencies>
 </project>

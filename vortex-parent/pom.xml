@@ -25,6 +25,10 @@
         <module>../vortex-user</module>
         <module>../vortex-order</module>
         <module>../vortex-gateway</module>
+        <module>../vortex-message</module>
+        <module>../vortex-message-center</module>
+        <module>../vortex-realtime</module>
+        <module>../vortex-bigdata</module>
     </modules>
 
     <properties>
