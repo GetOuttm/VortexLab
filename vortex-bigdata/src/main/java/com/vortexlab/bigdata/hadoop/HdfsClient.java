@@ -18,8 +18,7 @@ public class HdfsClient {
 
         conf.set("fs.defaultFS", "hdfs://localhost:9000");
 
-        fs =
-                FileSystem.get(conf);
+        fs = FileSystem.get(conf);
     }
 
 

@@ -1,0 +1,13 @@
+seata:
+  enabled: true
+  tx-service-group:
+    vortex-group
+
+service:
+  vgroup-mapping:
+    vortex-group:
+      default
+registry:
+  type:
+    file
+

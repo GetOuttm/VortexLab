@@ -29,6 +29,7 @@
         <module>../vortex-message-center</module>
         <module>../vortex-realtime</module>
         <module>../vortex-bigdata</module>
+        <module>../vortex-transaction</module>
     </modules>
 
     <properties>
